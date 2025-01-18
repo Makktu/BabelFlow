@@ -7,12 +7,12 @@ A simple and elegant desktop application for generating text using OpenAI's GPT-
 - User-friendly graphical interface
 - Real-time text generation
 - Automatic saving of outputs to file
-- Word wrapping and attractive formatting
-- Cross-platform compatibility
+- Word wrapping & formatting
+- Cross-platform
 
 ## Installation
 
-1. Make sure you have Python 3.7 or later installed
+1. Python 3.7 or later required
 2. Install the required dependencies:
 ```bash
 pip install -r requirements.txt
@@ -20,28 +20,27 @@ pip install -r requirements.txt
 
 ## Running BabelFlow
 
-Simply run:
 ```bash
 python chatgpt2_gui.py
 ```
 
-On first run, the application will automatically download the GPT-2 model (approximately 500MB). This is a one-time process.
+On first run, the application will automatically download the GPT-2 model (approximately 500MB). This is a one-time thing.
 
 ## Usage
 
-1. Enter your prompt in the input box
+1. Enter a prompt in the input box
 2. Click "Generate" to create text
-3. The generated text will appear in the output area and be saved to `output_gpt2.txt`
+3. The generated text will appear in the output area and be auto-saved to `output_gpt2.txt`
 4. Use the "Clear" button to reset the output display
 
 ## Why BabelFlow? For Lovers of Experimental Literature, That's Why...
 
-BabelFlow serves as a digital descendant of various experimental writing techniques, from the Dadaist cut-up method to James Joyce's stream-of-consciousness masterpiece "Finnegans Wake." Like these predecessors, it explores the boundaries between meaning and chaos, structure and fluidity.
+BabelFlow serves as a digital descendant of various experimental writing techniques, from the Dadaist cut-up method to James Joyce's masterpiece "Finnegans Wake". Like these predecessors, it generates text that explores the boundaries between meaning and chaos, structure and fluidity.
 
 BabelFlow's neural networks create text that often hovers in a fascinating space between coherence and abstraction. It can generate:
 
 - Stream-of-consciousness narratives reminiscent of Joyce or Virginia Woolf
-- Found poetry that emerges from seemingly random combinations
+- "Found poetry" that emerges from seemingly random combinations
 - Surrealist prose that challenges our expectations of language
 - Linguistic experiments that blur the line between sense and nonsense
 
@@ -49,8 +48,6 @@ By providing different prompts, you can guide the model towards various styles o
 - Abstract prompts ("blue dreams dissolving") tend to produce more poetic, dreamlike text
 - Technical prompts often result in fascinating pseudo-academic babble
 - Mixing different writing styles in your prompt can create interesting linguistic collisions
-
-Whether you're a fan of experimental literature, a poet seeking inspiration, or simply curious about the boundaries of machine-generated text, BabelFlow offers a playground for linguistic exploration. It's like having a tireless collaborator who's read everything but understood it just slightly wrong - in the most interesting ways possible.
 
 ## Requirements
 
