@@ -4,12 +4,13 @@ from transformers import pipeline
 import torch
 import os
 import threading
+import time
 
 class GPT2App:
     def __init__(self, root):
         self.root = root
         self.root.title("BabelFlow - a GPT-2 Text Generator")
-        self.root.geometry("800x700")  # Made taller to accommodate new controls
+        self.root.geometry("800x900")  # Made taller to accommodate new controls
         
         # Initialize the model
         self.initialize_model()
@@ -130,27 +131,27 @@ class GPT2App:
         self.rep_penalty.grid(row=2, column=1, padx=5, sticky="ew")
         
         # Help button
-        help_button = ttk.Button(controls_frame, text="?", width=3, command=self.show_parameter_help)
+        help_button = ttk.Button(controls_frame, text="?", width=1, command=self.show_parameter_help)
         help_button.pack(side="right", padx=5)
         
     def show_parameter_help(self):
         help_text = """Parameter Guide:
 
-Temperature (0.1-1.0):
-Lower = more focused and coherent
-Higher = more creative and random
+                    Temperature (0.1-1.0):
+                    Lower = more focused and coherent
+                    Higher = more creative and random
 
-Top-p (0.1-1.0):
-Lower = more focused on likely words
-Higher = more diverse vocabulary
+                    Top-p (0.1-1.0):
+                    Lower = more focused on likely words
+                    Higher = more diverse vocabulary
 
-Repetition Penalty (1.0-2.0):
-Higher = less repetition
-Lower = more natural but may repeat
+                    Repetition Penalty (1.0-2.0):
+                    Higher = less repetition
+                    Lower = more natural but may repeat
 
-Length Controls:
-Min/Max Length: Control the output size in tokens
-(roughly 4 characters per token)"""
+                    Length Controls:
+                    Min/Max Length: Control the output size in tokens
+                    (roughly 4 characters per token)"""
         
         messagebox.showinfo("Parameter Guide", help_text)
         
@@ -179,6 +180,8 @@ Min/Max Length: Control the output size in tokens
             messagebox.showwarning("Warning", "Please enter a prompt first!")
             return
             
+        # Disable generate button
+        self.generate_button.configure(style='DarkRed.TButton')
         self.generate_button.state(['disabled'])
         self.status_var.set("Generating text...")
         
@@ -201,6 +204,9 @@ Min/Max Length: Control the output size in tokens
             
             # Update GUI in the main thread
             self.root.after(0, self._update_output, prompt, clean_result)
+
+            # Add a small delay to simulate a longer generation time
+            time.sleep(2)
             
         except ValueError:
             # Error already shown by get_current_parameters
@@ -222,6 +228,11 @@ Min/Max Length: Control the output size in tokens
         # Save to file with the same formatting
         with open("output_gpt2.txt", 'a', encoding='utf-8') as file:
             file.write(formatted_text)
+
+        # re-enable generate button
+        self.generate_button.configure(style='TButton')
+        self.generate_button.state(['!disabled'])
+        self.status_var.set("Ready")
             
     def clear_output(self):
         self.output_text.delete("1.0", "end")
